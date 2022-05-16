@@ -1,5 +1,4 @@
-
-#include "SockConnection.h"
+#include "../../include/socket/SockConnection.h"
 #include <string.h>
 
 namespace reactor

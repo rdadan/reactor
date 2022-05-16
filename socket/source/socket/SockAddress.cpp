@@ -1,4 +1,4 @@
-#include "SockAddress.h"
+#include "../../include/socket/SockAddress.h"
 #include <string.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -17,7 +17,7 @@ namespace reactor
         memset(&_addr, 0, sizeof(_addr));
         _addr.sin_family = AF_INET;
         _addr.sin_addr.s_addr = inet_addr(ip);
-        _addr.sin_port = htons(8888);
+        _addr.sin_port = htons(port);
     }
     SockAddress::SockAddress(const struct sockaddr_in &addr)
         : _addr(addr)

@@ -1,6 +1,6 @@
-INC_DIR:= ./
-SRC_DIR:= ./
-SRCS:=$(wildcard *.cpp)
+INC_DIR:= ./include/socket # ./inc/net/ ./inc/threadpool/ ./inc/timer/ ./inc/cache/
+SRC_DIR:= ./source/socket # ./src/net ./src/threadpool ./src/timer ./src/cache/
+SRCS:=$(wildcard ./source/socket/*.cpp) #$(wildcard ./src/net/*.cc) $(wildcard ./src/net/*.c) $(wildcard ./src/threadpool/*.cc) $(wildcard ./src/timer/*.cc) $(wildcard ./src/cache/*.cc)
 OBJS:= $(patsubst %.cpp, %.o, $(SRCS))
 LIBS:= -lpthread
 

@@ -1,8 +1,8 @@
-#include "SockFd.h"
-#include "SockAddress.h"
-#include "SockIO.h"
-#include "SockAcceptor.h"
-#include "SockConnection.h"
+#include "../../include/socket/SockFd.h"
+#include "../../include/socket/SockAddress.h"
+#include "../../include/socket/SockIO.h"
+#include "../../include/socket/SockAcceptor.h"
+#include "../../include/socket/SockConnection.h"
 #include <string>
 #include <iostream>
 using std::cout;
