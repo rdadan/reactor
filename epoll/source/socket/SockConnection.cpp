@@ -66,7 +66,7 @@ namespace reactor
         return std::string(str);
     }
 
-    void SockConnection::doHandlCallBack(sockConnFunc &cbFunc)
+    void SockConnection::doHandlCallBack(SockConnCallBack &cbFunc)
     {
         // 使用场合：当类A被share_ptr管理，
         // 且在类A的成员函数里需要把当前类对象作为参数传给其他函数时，就需要传递一个指向自身的share_ptr

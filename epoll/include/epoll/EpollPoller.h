@@ -18,13 +18,13 @@ namespace reactor
         void unloop();
 
     public:
-        using EpollConnFunc = SockConnection::sockConnFunc;
-        using EpollFunctor = std::function<void()>;
+        using EpollConnCallBack = SockConnection::SockConnCallBack;
+        // using EpollFunctor = std::function<void()>;
 
     public:
-        void setConnectionCallback(EpollConnFunc cbFunc) { _connFunc = cbFunc; }
-        void setMessageCallback(EpollConnFunc cbFunc) { _msgFunc = cbFunc; }
-        void setCloseCallback(EpollConnFunc cbFunc) { _closeFunc = cbFunc; }
+        void setConnectionCallback(EpollConnCallBack cbFunc) { _connFunc = cbFunc; }
+        void setMessageCallback(EpollConnCallBack cbFunc) { _msgFunc = cbFunc; }
+        void setCloseCallback(EpollConnCallBack cbFunc) { _closeFunc = cbFunc; }
 
     private:
         void waitEpollfd();
@@ -32,9 +32,9 @@ namespace reactor
         void handleMessage(int peerfd);
 
     private:
-        EpollConnFunc _connFunc;
-        EpollConnFunc _msgFunc;
-        EpollConnFunc _closeFunc;
+        EpollConnCallBack _connFunc;
+        EpollConnCallBack _msgFunc;
+        EpollConnCallBack _closeFunc;
 
     private:
     private:
@@ -48,7 +48,7 @@ namespace reactor
         using VecEvent = std::vector<struct epoll_event>;
         VecEvent _vecEvent;
         // key:peerfd, val: shared_ptr<SockConnection>
-        using ConnectionMap = std::map<int, sockConnPtr>;
+        using ConnectionMap = std::map<int, SockConnPtr>;
         ConnectionMap _mapConn;
     };
 

@@ -8,7 +8,7 @@ namespace reactor
     class SockAddress
     {
     public:
-        SockAddress();
+        SockAddress(); // 默认ip和port
         SockAddress(const char *ip, unsigned short port);
         SockAddress(const struct sockaddr_in &addr);
         ~SockAddress();

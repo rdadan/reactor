@@ -7,7 +7,7 @@
 namespace reactor
 {
     SockFd::SockFd()
-        : _sockfd(SockFd::createSockFD())
+        : _sockfd(createSockFd())
     {
         nonBlock(_sockfd);
     }
@@ -20,15 +20,15 @@ namespace reactor
     {
         close(_sockfd);
     }
-    int SockFd::createSockFD()
-    {
-        int fd = socket(AF_INET, SOCK_STREAM, 0);
-        if (fd == -1)
-        {
-            perror("SockFd");
-        }
-        return fd;
-    }
+    // int SockFd::createSockFD()
+    // {
+    //     int fd = socket(AF_INET, SOCK_STREAM, 0);
+    //     if (fd == -1)
+    //     {
+    //         perror("SockFd");
+    //     }
+    //     return fd;
+    // }
     void SockFd::shutDownWrite()
     {
         int ret = shutdown(_sockfd, SHUT_WR);

@@ -8,8 +8,8 @@ namespace reactor
         : _sock(), _addr(addr)
     {
     }
-    SockAcceptor::SockAcceptor(int sockfd, const SockAddress &addr)
-        : _sock(sockfd), _addr(addr)
+    SockAcceptor::SockAcceptor(int serverfd, const SockAddress &addr)
+        : _sock(serverfd), _addr(addr)
     {
     }
     SockAcceptor::~SockAcceptor()
@@ -18,9 +18,8 @@ namespace reactor
 
     void SockAcceptor::bind()
     {
-        int fd = _sock.getSockFD();
         const struct sockaddr_in *addr = _addr.getSockAddr();
-        int ret = ::bind(fd, (struct sockaddr *)addr, sizeof(sockaddr_in));
+        int ret = ::bind(_sock.getSockFD(), (struct sockaddr *)addr, sizeof(sockaddr_in));
         if (ret == -1)
         {
             perror("bind");
@@ -37,10 +36,9 @@ namespace reactor
     }
     int SockAcceptor::accept()
     {
-        int sockfd = _sock.getSockFD();
         const struct sockaddr_in *addr = _addr.getSockAddr();
         socklen_t adr_sz = sizeof(*addr);
-        int client_fd = ::accept(sockfd, (struct sockaddr *)addr, &adr_sz);
+        int client_fd = ::accept(_sock.getSockFD(), (struct sockaddr *)addr, &adr_sz);
         if (client_fd == -1)
         {
             perror("accept");
@@ -50,9 +48,8 @@ namespace reactor
 
     void SockAcceptor::setReuseAddr()
     {
-        int sockfd = _sock.getSockFD();
         int on = 1;
-        int ret = ::setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on));
+        int ret = ::setsockopt(_sock.getSockFD(), SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on));
     }
 
     void SockAcceptor::setReusePort()

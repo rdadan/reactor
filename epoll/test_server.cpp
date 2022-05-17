@@ -1,10 +1,12 @@
-#include "./include/socket/SockFd.h"
-#include "./include/socket/SockAddress.h"
-#include "./include/socket/SockIO.h"
-#include "./include/socket/SockAcceptor.h"
-#include "./include/socket/SockConnection.h"
-#include "./include/epoll/Epoll.h"
-#include "./include/epoll/EpollPoller.h"
+// #include "./include/socket/SockFd.h"
+// #include "./include/socket/SockAddress.h"
+// #include "./include/socket/SockIO.h"
+// #include "./include/socket/SockAcceptor.h"
+// #include "./include/socket/SockConnection.h"
+// #include "./include/epoll/Epoll.h"
+// #include "./include/epoll/EpollPoller.h"
+#include "./include/tcp/TcpServer.h"
+
 #include <string>
 #include <iostream>
 using std::cout;
@@ -12,13 +14,13 @@ using std::endl;
 using std::string;
 using namespace reactor;
 
-void onConnection(const sockConnPtr &pConn)
+void onConnection(const TcpConnectionPtr &pConn)
 {
 	cout << pConn->toString() << "has connected!" << endl;
 	pConn->sendMsg("hello, welcome to Chat Server.\r\n");
 }
 
-void onMessage(const sockConnPtr &pConn)
+void onMessage(const TcpConnectionPtr &pConn)
 {
 	std::string s(pConn->recvMsg());
 	cout << "server: " << s << endl;
@@ -26,23 +28,18 @@ void onMessage(const sockConnPtr &pConn)
 	//做业务逻辑的处理
 }
 
-void onClose(const sockConnPtr &pConn)
+void onClose(const TcpConnectionPtr &pConn)
 {
 	printf("%s close\n", pConn->toString().c_str());
 }
 
 int main(int argc, char const *argv[])
 {
-	cout << "eee" << endl;
-	SockAddress addr;
-	SockAcceptor acceptor(addr);
-	acceptor.ready();
+	TcpServer tcpserver;
+	tcpserver.setTcpConnCallBack(&onConnection);
+	tcpserver.setTcpMsgCallBack(&onMessage);
+	tcpserver.setTcpCloseCallBack(&onClose);
 
-	EpollPoller poller(acceptor);
-	poller.setConnectionCallback(&onConnection);
-	poller.setMessageCallback(&onMessage);
-	poller.setCloseCallback(&onClose);
-
-	poller.loop();
+	tcpserver.startTcpServer();
 	return 0;
 }

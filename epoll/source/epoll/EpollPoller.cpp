@@ -35,17 +35,17 @@ namespace reactor
             _islopping = false;
     }
 
-    // void EpollPoller::setConnectionCallback(EpollConnFunc cbFunc)
+    // void EpollPoller::setConnectionCallback(EpollConnCallBack cbFunc)
     // {
     //     _connFunc = cbFunc;
     // }
 
-    // void EpollPoller::setMessageCallback(EpollConnFunc cbFunc)
+    // void EpollPoller::setMessageCallback(EpollConnCallBack cbFunc)
     // {
     //     _msgFunc = cbFunc;
     // }
 
-    // void EpollPoller::setCloseCallback(EpollConnFunc cbFunc)
+    // void EpollPoller::setCloseCallback(EpollConnCallBack cbFunc)
     // {
     //     _closeFunc = cbFunc;
     // }
@@ -108,7 +108,8 @@ namespace reactor
         // 注册客户端描述符
         addEpollFdRead(_epfd, peerfd);
 
-        sockConnPtr pConn(new SockConnection(peerfd));
+        // 创建连接对象
+        SockConnPtr pConn(new SockConnection(peerfd));
         // 连接成功后，注册以后将要给客户端发送的信息
         pConn->setConnCallBack(_connFunc);
         pConn->setMsgCallBack(_msgFunc);
@@ -127,8 +128,7 @@ namespace reactor
         // 查找客户端的描述符, 返回 sockConnPtr
         ConnectionMap::iterator it = _mapConn.find(peerfd);
         assert(it != _mapConn.end());
-
-        sockConnPtr pConn = it->second;
+        SockConnPtr pConn = it->second;
         if (isClosed)
         {
             pConn->handleCloseCallBack();

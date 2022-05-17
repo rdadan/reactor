@@ -4,6 +4,7 @@
 #include "NonCopy.h"
 #include <fcntl.h>
 #include <netinet/in.h>
+#include <stdio.h>
 namespace reactor
 {
     class SockAddress;
@@ -14,7 +15,7 @@ namespace reactor
         SockFd(int sockfd);
         ~SockFd();            // 全关闭
         void shutDownWrite(); // 半关闭
-        int createSockFD();
+        // int createSockFD();
         int getSockFD() const { return _sockfd; }
         void setNonBlock();
         static SockAddress getSerAddr(int sockfd);
@@ -28,6 +29,15 @@ namespace reactor
     {
         int status = fcntl(fd, F_GETFD, 0);
         fcntl(fd, F_SETFL, status | O_NONBLOCK);
+    }
+    inline int createSockFd()
+    {
+        int fd = socket(AF_INET, SOCK_STREAM, 0);
+        if (fd == -1)
+        {
+            perror("SockFd");
+        }
+        return fd;
     }
 } // end space
 #endif
