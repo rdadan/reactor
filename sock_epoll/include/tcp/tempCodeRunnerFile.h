@@ -1,0 +1,2 @@
+ void startTcpServer();
+        void stopTcpServer();
