@@ -1,0 +1,5 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/mnt/d/MyProjects/linuxOS/reactor/epoll'
+make: 'ser' is up to date.
+make: Leaving directory '/mnt/d/MyProjects/linuxOS/reactor/epoll'
+ 
