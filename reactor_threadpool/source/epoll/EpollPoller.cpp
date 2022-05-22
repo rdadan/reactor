@@ -92,6 +92,8 @@ namespace reactor
                 // 服务器处理连接请求
                 if (_vecEvent[idx].data.fd == _servfd)
                 {
+                    cout << "IO Acceot 进程ID: " << getpid() << " 线程ID: " << pthread_self() << endl;
+
                     if (_vecEvent[idx].events & EPOLLIN)
                     {
                         handleConnection();
@@ -178,6 +180,8 @@ namespace reactor
         // 执行IO发送
         for (auto func : _vecTmp)
         {
+            cout << "IO线程 sendMsg: 进程ID: " << getpid() << " 线程ID: " << pthread_self() << endl;
+
             func();
         }
     }

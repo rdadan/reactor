@@ -32,22 +32,10 @@ public:
 	{
 		cout << "task is processing" << endl;
 		//_pConn现在在计算线程里，如果直接去使用send，TcpConnection就在计算线程里面完成了数据发送,不可取
-		if (_strTask == "1\n")
-		{
-			func1();
-		}
-
 		// 应该让处于计算线程里的TcpConn通知EpollPoller所在的线程完成IO处理
-		_pConn->sendMsgToLoop(_strTask); // 在epoll对象所在线程里完成数据发送
-	}
+		// _pConn->sendMsg(_strTask);
 
-	void func1()
-	{
-		int i = 999999999999999;
-		while (i--)
-		{
-		}
-		cout << "计算线程func1() 进程ID: " << getpid() << " 线程ID: " << pthread_self() << endl;
+		_pConn->sendMsgToLoop(_strTask); // 在epoll对象所在线程里完成数据发送
 	}
 
 private:
@@ -55,59 +43,40 @@ private:
 	spTcpConnPtr _pConn;
 };
 
-class EchoSession
-{
-public:
-	EchoSession()
-		: _threadpool(4, 10),
-		  _tcpserver()
-	{
-	}
-
-	static void onMessage(const spTcpConnPtr &conn);
-	static void onConnection(const spTcpConnPtr &conn);
-	static void onClose(const spTcpConnPtr &conn);
-	void start();
-
-private:
-	ThreadPool _threadpool;
-	TcpServer _tcpserver;
-};
-
 // 在线IO线程
-void EchoSession::onMessage(const spTcpConnPtr &pConn)
+void onMessage(const spTcpConnPtr &pConn)
 {
-	// 1. 获取数据
-	string strTask = pConn->recvMsg();
+	string strTask = pConn->recvMsg(); // 1. 获取数据
 	// 2. 对数据的处理交给线程池的线程（计算线程）做
+	// std::unique_ptr<EchoTask> pTask(new EchoTask(strTask, pConn));
+	// g_threadpool->setTask(pTask.get()); // 返回pTask保存的指针
 	g_threadpool->setTask(new EchoTask(strTask, pConn));
 	// 3. 发送数据交给epollpoller对象所在的线程（IO线程）完成，
 	// 所以计算线程完成计算后需要通知 IO线程
 }
-
-void EchoSession::onConnection(const spTcpConnPtr &pConn)
+void onConnection(const spTcpConnPtr &pConn)
 {
 	cout << pConn->toString() << " has connected!" << endl;
 	pConn->sendMsg("hello, welcome to Server.\r\n");
 }
 
-void EchoSession::onClose(const spTcpConnPtr &pConn)
+void onClose(const spTcpConnPtr &pConn)
 {
 	printf("%s close\n", pConn->toString().c_str());
 }
-void EchoSession::start()
-{
-	g_threadpool = &_threadpool;
-	_threadpool.start();
-	_tcpserver.setTcpConnCallBack(&onConnection);
-	_tcpserver.setTcpMsgCallBack(&onMessage);
-	_tcpserver.setTcpCloseCallBack(&onClose);
-	_tcpserver.startTcpServer();
-}
+
 int main(int argc, char const *argv[])
 {
 
-	EchoSession echo;
-	echo.start();
+	ThreadPool threadpool(4, 10);
+	g_threadpool = &threadpool;
+	threadpool.start();
+
+	TcpServer tcpserver;
+	tcpserver.setTcpConnCallBack(&onConnection);
+	tcpserver.setTcpMsgCallBack(&onMessage);
+	tcpserver.setTcpCloseCallBack(&onClose);
+
+	tcpserver.startTcpServer();
 	return 0;
 }
