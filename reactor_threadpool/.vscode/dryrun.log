@@ -1,23 +1,30 @@
 make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/mnt/d/MyProjects/linuxOS/reactor/reactor_threadpool'
 g++ -w -g -std=c++11 -I./include/socket -I./include/epoll -I./include/tcp -I./include/threadpoll -lpthread -Wno-deprecated   -c -o test_server.o test_server.cpp
+ 
 g++ -w -g -std=c++11 -I./include/socket -I./include/epoll -I./include/tcp -I./include/threadpoll -lpthread -Wno-deprecated   -c -o source/socket/SockAddress.o source/socket/SockAddress.cpp
 g++ -w -g -std=c++11 -I./include/socket -I./include/epoll -I./include/tcp -I./include/threadpoll -lpthread -Wno-deprecated   -c -o source/socket/SockFd.o source/socket/SockFd.cpp
+ 
 g++ -w -g -std=c++11 -I./include/socket -I./include/epoll -I./include/tcp -I./include/threadpoll -lpthread -Wno-deprecated   -c -o source/socket/SockIO.o source/socket/SockIO.cpp
 g++ -w -g -std=c++11 -I./include/socket -I./include/epoll -I./include/tcp -I./include/threadpoll -lpthread -Wno-deprecated   -c -o source/socket/SockAcceptor.o source/socket/SockAcceptor.cpp
-g++ -w -g -std=c++11 -I./include/socket -I./include/epoll -I./include/tcp -I./include/threadpoll -lpthread -Wno-deprecated   -c -o source/socket/SockConnection.o source/socket/SockConnection.cpp
-g++ -w -g -std=c++11 -I./include/socket -I./include/epoll -I./include/tcp -I./include/threadpoll -lpthread -Wno-deprecated   -c -o source/epoll/EpollPoller.o source/epoll/EpollPoller.cpp
-g++ -w -g -std=c++11 -I./include/socket -I./include/epoll -I./include/tcp -I./include/threadpoll -lpthread -Wno-deprecated   -c -o source/tcp/TcpServer.o source/tcp/TcpServer.cpp
-g++ -w -g -std=c++11 -I./include/socket -I./include/epoll -I./include/tcp -I./include/threadpoll -lpthread -Wno-deprecated   -c -o source/threadpoll/Thread.o source/threadpoll/Thread.cpp
  
+g++ -w -g -std=c++11 -I./include/socket -I./include/epoll -I./include/tcp -I./include/threadpoll -lpthread -Wno-deprecated   -c -o source/epoll/EpollPoller.o source/epoll/EpollPoller.cpp
+ 
+g++ -w -g -std=c++11 -I./include/socket -I./include/epoll -I./include/tcp -I./include/threadpoll -lpthread -Wno-deprecated   -c -o source/tcp/TcpServer.o source/tcp/TcpServer.cpp
+ 
+g++ -w -g -std=c++11 -I./include/socket -I./include/epoll -I./include/tcp -I./include/threadpoll -lpthread -Wno-deprecated   -c -o source/tcp/TcpConnection.o source/tcp/TcpConnection.cpp
+ 
+g++ -w -g -std=c++11 -I./include/socket -I./include/epoll -I./include/tcp -I./include/threadpoll -lpthread -Wno-deprecated   -c -o source/threadpoll/Thread.o source/threadpoll/Thread.cpp
 g++ -w -g -std=c++11 -I./include/socket -I./include/epoll -I./include/tcp -I./include/threadpoll -lpthread -Wno-deprecated   -c -o source/threadpoll/ThreadPool.o source/threadpoll/ThreadPool.cpp
 g++ -w -g -std=c++11 -I./include/socket -I./include/epoll -I./include/tcp -I./include/threadpoll -lpthread -Wno-deprecated   -c -o source/threadpoll/TaskQueue.o source/threadpoll/TaskQueue.cpp
+ 
 g++ -w -g -std=c++11 -I./include/socket -I./include/epoll -I./include/tcp -I./include/threadpoll -lpthread -Wno-deprecated   -c -o source/threadpoll/Mutex.o source/threadpoll/Mutex.cpp
  
 g++ -w -g -std=c++11 -I./include/socket -I./include/epoll -I./include/tcp -I./include/threadpoll -lpthread -Wno-deprecated   -c -o source/threadpoll/Condition.o source/threadpoll/Condition.cpp
+ 
 g++ -w -g -std=c++11 -I./include/socket -I./include/epoll -I./include/tcp -I./include/threadpoll -lpthread -Wno-deprecated   -c -o source/threadpoll/ThreadWorker.o source/threadpoll/ThreadWorker.cpp
  
 g++ -w -g -std=c++11 -I./include/socket -I./include/epoll -I./include/tcp -I./include/threadpoll -lpthread -Wno-deprecated   -c -o source/threadpoll/test.o source/threadpoll/test.cpp
-g++ -o ./ser  ./test_server.o  ./source/socket/SockAddress.o  ./source/socket/SockFd.o  ./source/socket/SockIO.o  ./source/socket/SockAcceptor.o  ./source/socket/SockConnection.o  ./source/epoll/EpollPoller.o  ./source/tcp/TcpServer.o  ./source/threadpoll/Thread.o  ./source/threadpoll/ThreadPool.o  ./source/threadpoll/TaskQueue.o  ./source/threadpoll/Mutex.o  ./source/threadpoll/Condition.o  ./source/threadpoll/ThreadWorker.o  ./source/threadpoll/test.o -w -g -std=c++11 -I./include/socket -I./include/epoll -I./include/tcp -I./include/threadpoll -lpthread -Wno-deprecated
+g++ -o ./ser  ./test_server.o  ./source/socket/SockAddress.o  ./source/socket/SockFd.o  ./source/socket/SockIO.o  ./source/socket/SockAcceptor.o  ./source/epoll/EpollPoller.o  ./source/tcp/TcpServer.o  ./source/tcp/TcpConnection.o  ./source/threadpoll/Thread.o  ./source/threadpoll/ThreadPool.o  ./source/threadpoll/TaskQueue.o  ./source/threadpoll/Mutex.o  ./source/threadpoll/Condition.o  ./source/threadpoll/ThreadWorker.o  ./source/threadpoll/test.o -w -g -std=c++11 -I./include/socket -I./include/epoll -I./include/tcp -I./include/threadpoll -lpthread -Wno-deprecated
 make: Leaving directory '/mnt/d/MyProjects/linuxOS/reactor/reactor_threadpool'
  

@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu May 19 13:24:54 2022
+# Make data base, printed on Mon May 23 13:28:14 2022
 
 # Variables
 
@@ -17,7 +17,7 @@ make: *** No rule to make target 'all'.  Stop.
 # automatic
 ?F = $(notdir $?)
 # environment
-WSLENV = VSCODE_WSL_EXT_LOCATION/up:VSCODE_SERVER_TAR/up
+WSLENV = VSCODE_WSL_EXT_LOCATION/up
 # default
 .SHELLFLAGS := -c
 # environment
@@ -49,7 +49,7 @@ XDG_DATA_DIRS = /usr/local/share:/usr/share:/var/lib/snapd/desktop
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # makefile (from 'Makefile', line 9)
-OBJS :=  ./test_server.o  ./source/socket/SockAddress.o  ./source/socket/SockFd.o  ./source/socket/SockIO.o  ./source/socket/SockAcceptor.o  ./source/socket/SockConnection.o  ./source/epoll/EpollPoller.o  ./source/tcp/TcpServer.o  ./source/threadpoll/Thread.o  ./source/threadpoll/ThreadPool.o  ./source/threadpoll/TaskQueue.o  ./source/threadpoll/Mutex.o  ./source/threadpoll/Condition.o  ./source/threadpoll/ThreadWorker.o  ./source/threadpoll/test.o
+OBJS :=  ./test_server.o  ./source/socket/SockAddress.o  ./source/socket/SockFd.o  ./source/socket/SockIO.o  ./source/socket/SockAcceptor.o  ./source/epoll/EpollPoller.o  ./source/tcp/TcpServer.o  ./source/tcp/TcpConnection.o  ./source/threadpoll/Thread.o  ./source/threadpoll/ThreadPool.o  ./source/threadpoll/TaskQueue.o  ./source/threadpoll/Mutex.o  ./source/threadpoll/Condition.o  ./source/threadpoll/ThreadWorker.o  ./source/threadpoll/test.o
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
@@ -60,8 +60,6 @@ MAKE_HOST := x86_64-pc-linux-gnu
 PATH = /home/rdadan/.vscode-server/bin/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Python310/Scripts/:/mnt/c/Python310/:/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v10.0/bin:/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v10.0/libnvvp:/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v10.0/extras/CUPTI/libx64:/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v10.0/cudnn/bin/:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files/Intel/WiFi/bin/:/mnt/c/Program Files/Common Files/Intel/WirelessCommon/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/TortoiseGit/bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/:/mnt/d/Program Files/CMake/bin:/mnt/d/Program Files/CMake3.14.7/bin:/mnt/d/Program Files/CMake3.19.2/bin:/mnt/c/Program Files/dotnet/:/mnt/d/anaconda3:/mnt/d/anaconda3/Scripts:/mnt/d/anaconda3/Library/bin:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/ProgramData/DockerDesktop/version-bin:/mnt/c/Program Files (x86)/dotnet/:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/d/latex/texlive/2021/bin/win32:/mnt/d/software/xshell5/:/mnt/d/mingw64/bin:/mnt/c/Program Files/nodejs/:/mnt/c/ProgramData/chocolatey/bin:/mnt/d/latex/texlive/2021/bin/win32:/mnt/d/Microsoft VS Code/bin:/mnt/c/Users/荣大胆/AppData/Roaming/npm:/mnt/c/Program Files/nodejs:/mnt/c/Program Files/nodejs/node_global/:/snap/bin
 # environment
 VSCODE_LOG_STACK = false
-# environment
-VSCODE_SERVER_TAR = /mnt/c/Windows/TEMP/vscode-remote-wsl/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/vscode-server-stable-linux-x64.tar.gz
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -73,9 +71,9 @@ VSCODE_PIPE_LOGGING = true
 # environment
 PWD = /mnt/d/MyProjects/linuxOS/reactor/reactor_threadpool
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-0a7031fa-50f6-42cb-a565-4b4ac5bbf2b9.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-33c30487-7636-49e7-bde5-fbd53064564f.sock
 # environment
-WSL_INTEROP = /run/WSL/10_interop
+WSL_INTEROP = /run/WSL/13_interop
 # makefile (from 'Makefile', line 1)
 INC_DIR := ./include/socket ./include/epoll ./include/tcp ./include/threadpoll
 # environment
@@ -99,7 +97,7 @@ MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
 # makefile (from 'Makefile', line 3)
-SRCS := ./test_server.cpp ./source/socket/SockAddress.cpp ./source/socket/SockFd.cpp ./source/socket/SockIO.cpp ./source/socket/SockAcceptor.cpp ./source/socket/SockConnection.cpp ./source/epoll/EpollPoller.cpp ./source/tcp/TcpServer.cpp ./source/threadpoll/Thread.cpp ./source/threadpoll/ThreadPool.cpp ./source/threadpoll/TaskQueue.cpp ./source/threadpoll/Mutex.cpp ./source/threadpoll/Condition.cpp ./source/threadpoll/ThreadWorker.cpp ./source/threadpoll/test.cpp 
+SRCS := ./test_server.cpp ./source/socket/SockAddress.cpp ./source/socket/SockFd.cpp ./source/socket/SockIO.cpp ./source/socket/SockAcceptor.cpp ./source/epoll/EpollPoller.cpp ./source/tcp/TcpServer.cpp ./source/tcp/TcpConnection.cpp ./source/threadpoll/Thread.cpp ./source/threadpoll/ThreadPool.cpp ./source/threadpoll/TaskQueue.cpp ./source/threadpoll/Mutex.cpp ./source/threadpoll/Condition.cpp ./source/threadpoll/ThreadWorker.cpp ./source/threadpoll/test.cpp 
 # environment
 SHLVL = 2
 # default
@@ -163,7 +161,7 @@ VSCODE_EXTHOST_WILL_SEND_SOCKET = true
 # environment
 WSL_DISTRO_NAME = Ubuntu-18.04
 # variable set hash-table stats:
-# Load=75/1024=7%, Rehash=0, Collisions=5/105=5%
+# Load=74/1024=7%, Rehash=0, Collisions=5/104=5%
 
 # Pattern-specific Variable Values
 
@@ -171,13 +169,13 @@ WSL_DISTRO_NAME = Ubuntu-18.04
 
 # Directories
 
-# . (device 47, inode 1125899907485780): 10 files, no impossibilities.
+# . (device 47, inode 1125899907485780): 12 files, no impossibilities.
 # ./source/socket (device 47, inode 1125899907486001): 14 files, no impossibilities.
-# ./source/tcp (device 47, inode 1125899907485995): 4 files, no impossibilities.
+# ./source/tcp (device 47, inode 1125899907485995): 6 files, no impossibilities.
 # ./source/threadpoll (device 47, inode 1125899907485838): 16 files, no impossibilities.
 # ./source/epoll (device 47, inode 1125899907485998): 4 files, no impossibilities.
 
-# 48 files, no impossibilities in 5 directories.
+# 52 files, no impossibilities in 5 directories.
 
 # Implicit Rules
 
@@ -186,18 +184,12 @@ WSL_DISTRO_NAME = Ubuntu-18.04
 # Files
 
 # Not a target:
-source/socket/SockConnection.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
 source/threadpoll/ThreadPool.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-ser: test_server.o source/socket/SockAddress.o source/socket/SockFd.o source/socket/SockIO.o source/socket/SockAcceptor.o source/socket/SockConnection.o source/epoll/EpollPoller.o source/tcp/TcpServer.o source/threadpoll/Thread.o source/threadpoll/ThreadPool.o source/threadpoll/TaskQueue.o source/threadpoll/Mutex.o source/threadpoll/Condition.o source/threadpoll/ThreadWorker.o source/threadpoll/test.o
+ser: test_server.o source/socket/SockAddress.o source/socket/SockFd.o source/socket/SockIO.o source/socket/SockAcceptor.o source/epoll/EpollPoller.o source/tcp/TcpServer.o source/tcp/TcpConnection.o source/threadpoll/Thread.o source/threadpoll/ThreadPool.o source/threadpoll/TaskQueue.o source/threadpoll/Mutex.o source/threadpoll/Condition.o source/threadpoll/ThreadWorker.o source/threadpoll/test.o
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -272,7 +264,6 @@ source/threadpoll/ThreadWorker.o:
 #  Modification time never checked.
 #  File has not been updated.
 
- 
 # Not a target:
 source/threadpoll/Mutex.o:
 #  Implicit rule search has not been done.
@@ -281,6 +272,7 @@ source/threadpoll/Mutex.o:
 
 clean:
 #  Implicit rule search has not been done.
+ 
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 22):
@@ -289,6 +281,12 @@ clean:
 
 # Not a target:
 source/socket/SockAddress.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+source/tcp/TcpConnection.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -319,12 +317,12 @@ source/epoll/EpollPoller.o:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 64 / storage = 973 B / avg = 15 B
-# current buf: size = 8162 B / used = 973 B / count = 64 / avg = 15 B
+# strcache buffers: 1 (0) / strings = 66 / storage = 1001 B / avg = 15 B
+# current buf: size = 8162 B / used = 1001 B / count = 66 / avg = 15 B
 
-# strcache performance: lookups = 80 / hit rate = 20%
+# strcache performance: lookups = 84 / hit rate = 21%
 # hash-table stats:
-# Load=64/8192=1%, Rehash=0, Collisions=6/80=8%
-# Finished Make data base on Thu May 19 13:24:54 2022
+# Load=66/8192=1%, Rehash=0, Collisions=6/84=7%
+# Finished Make data base on Mon May 23 13:28:14 2022
 
  
